@@ -45,7 +45,7 @@ class AutoTranslate extends Command
                     foreach ($localeFileContent as $key) {
                         $results[$key] = $translator->translate($key);
                     }
-                    File::put($filePath, json_encode($results, JSON_UNESCAPED_UNICODE));
+                    File::put($filePath, json_encode($results, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
                 }
             } catch (\Exception $e) {
                 $this->error('Error: ' . $e->getMessage());
